@@ -1,0 +1,37 @@
+.container {
+    width: 500px;
+}
+
+.textfield_button_container {
+    display: flex;
+}
+
+.transparentInput {
+    border: none; /* Remove border */
+    color: #000000;
+    border-bottom: 1px solid grey; /* Add grey underline */
+    outline: none; /* Remove default focus outline */
+    background: transparent; /* Make background transparent */
+    font-size: 16px; /* Adjust font size */
+    padding: 5px 0; /* Add some padding */
+    width: 100%;
+}
+
+.transparentInput::placeholder {
+    color: lightgrey; /* Style placeholder text */
+}
+
+.transparentInput:focus {
+}
+
+.enter_button {
+    background-color: white;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+}
+
+.enter_button_img {
+    height: 100%;
+    width: 100%;
+}

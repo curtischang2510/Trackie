@@ -1,0 +1,24 @@
+const user = {
+  id: "userId1",
+  name: "John Doe",
+  tags: ["Transport", "Food", "Accommodation", "Shopping"]
+  events: [
+    {
+      id: "event1",
+      name: "Wedding",
+      tags: ["Food"]
+      transactions: [
+        { id: "transaction1", description: "Cake", amount: 500 , currency: "SGD"},
+        { id: "transaction2", description: "Venue", amount: 1500 , currency: "SGD" },
+      ],
+    },
+    {
+      id: "event2",
+      name: "Birthday",
+      tags: ["Shopping", "Food"]
+      transactions: [
+        { id: "transaction3", description: "Gift", amount: 50 , currency: "YEN"},
+      ],
+    },
+  ],
+};

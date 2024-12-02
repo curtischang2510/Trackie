@@ -1,0 +1,24 @@
+/* contains styles for tag container and tags */
+.tag_container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; 
+    gap: 20px;
+}
+
+.tag {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    border-radius: 50px; /* Makes the button pill-shaped */
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.picked {
+    background-color: green; /* Change color when picked */
+    color: white;
+}
