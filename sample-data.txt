@@ -17,7 +17,7 @@ const user = {
       name: "Birthday",
       tags: ["Shopping", "Food"]
       transactions: [
-        { id: "transaction3", description: "Gift", amount: 50 , currency: "YEN"},
+        { id: "transaction3", description: "Gift", tag: "Food", amount: 50 , currency: "YEN", amount_in_base_currency: },
       ],
     },
   ],
