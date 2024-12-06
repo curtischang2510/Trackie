@@ -1,20 +1,42 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "../assets/stylesheets/MainTextBox.module.css"; // Import the CSS module
-import SelectCurrencyButton from "./SelectCurrencyDropdown";
+
+import SaveExpenseButton from "./SaveExpenseButton.jsx";
+import SelectCurrencyDropdown from "./SelectCurrencyDropdown";
+import SelectTagsDropdown from "./SelectTagsDropdown.jsx";
+
+import { AuthenticatedUserContext } from "../contexts/AuthenticatedUserContext.jsx";
+import { getAllEvents } from "../services/GetEventService.jsx";
 
 const MainTextBox = () => {
   // State to track the typed event name
   const [eventName, setEventName] = useState("");
+  const [expenseName, setExpenseName] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseCurrency, setExpenseCurrency] = useState("");
+  const [expenseTag, setExpenseTag] = useState("");
+  const [existingEvents, setExistingEvents] = useState([]);
 
-  // Placeholder list of events
-  const events = [
-    { id: 1, name: "Wedding Planning" },
-    { id: 2, name: "Italy Honeymoon" },
-    { id: 3, name: "Birthday Party" },
-  ];
+  const { userID } = useContext(AuthenticatedUserContext);
+  useEffect(() => {
+    console.log(expenseTag)
+  }, [expenseTag])
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const fetchedEvents = await getAllEvents(userID);
+        setExistingEvents(fetchedEvents); // Update state with fetched events
+      } catch (error) {
+        console.error("Failed to load events:", error);
+      }
+    };
+
+    fetchEvents(); // Call the asynchronous function
+  }, []);
 
   // Filter events based on the typed event name
-  const matchingEvents = events.filter((event) =>
+  const matchingEvents = existingEvents.filter((event) =>
     event.name.toLowerCase().includes(eventName.toLowerCase())
   );
 
@@ -22,7 +44,7 @@ const MainTextBox = () => {
     setEventName(selectedEventName);
   };
 
-  const isExactMatch = events.find(
+  const isExactMatch = existingEvents.find(
     (event) => event.name.toLowerCase() === eventName.toLowerCase()
   );
 
@@ -62,17 +84,36 @@ const MainTextBox = () => {
           type="text"
           placeholder="Expense Name"
           className={styles.input}
+          onChange={(e) => setExpenseName(e.target.value)}
         />
 
         {/* Input for the expense amount */}
-        <input type="number" placeholder="Amount" className={styles.input} />
+        <input
+          type="number"
+          placeholder="Amount"
+          className={styles.input}
+          onChange={(e) => setExpenseAmount(e.target.value)}
+        />
 
-        <SelectCurrencyButton />
+        <SelectCurrencyDropdown setExpenseCurrency={setExpenseCurrency} />
+
+        <SelectTagsDropdown
+          setExpenseTag={setExpenseTag}
+          currEvent={
+            isExactMatch && matchingEvents.length > 0 ? matchingEvents[0] : null
+          }
+        />
 
         {/* Button to save the expense */}
-        <button type="submit" className={styles.button}>
-          Save Expense
-        </button>
+        <SaveExpenseButton
+          className={styles.button}
+          eventName={eventName}
+          existingEvents={existingEvents}
+          expenseName={expenseName}
+          expenseTag={expenseTag}
+          amount={expenseAmount}
+          expenseCurrency={expenseCurrency}
+        />
       </form>
     </div>
   );

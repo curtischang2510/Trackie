@@ -43,12 +43,24 @@ const customStyles = {
   }),
 };
 
-const SelectCurrencyButton = () => {
+const SelectCurrencyDropdown= ({ setExpenseCurrency }) => {
+ 
+  const handleChange = (selectedOption) => {
+    if (setExpenseCurrency) {
+      console.log("Selected currency option: ", selectedOption.value)
+      setExpenseCurrency(selectedOption?.value || "SGD")
+    }
+  }
+
   return (
     <React.Fragment>
-      <Select options={currencyOptions} styles={customStyles} />
+      <Select
+        options={currencyOptions}
+        styles={customStyles}
+        onChange={handleChange}
+      />
     </React.Fragment>
   );
 };
 
-export default SelectCurrencyButton;
+export default SelectCurrencyDropdown;

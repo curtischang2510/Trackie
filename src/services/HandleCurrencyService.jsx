@@ -1,7 +1,9 @@
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 
 const baseCurrency = "SGD"; // hard coded for now
-const freecurrencyapi = new Freecurrencyapi("YOUR-API-KEY");
+const freecurrencyapi = new Freecurrencyapi(
+  "fca_live_CGiBmBieHtUkBVZ576rUh8BlLKnvXiKWIb9whJyG"
+);
 
 const currencyOptions = [
   { value: "USD", label: "USD - United States Dollar" },
@@ -18,13 +20,16 @@ const convertToCurrency = (srcAmount, sourceCurrency, targetCurrency) => {
       currencies: targetCurrency,
     })
     .then((response) => {
-      console.log(response);
+      console.log("Response from currency api is :", response);
 
-      const conversionRate = response.data.targetCurrency;
+      const conversionRate = response.data[targetCurrency];
       if (conversionRate) {
-        return srcAmount * conversionRate;
+        const amountInTarget = srcAmount * conversionRate;
+        
+        // Convert to 2DP
+        return parseFloat(amountInTarget.toFixed(2)) 
       } else {
-        console.log('Conversion rate not available');
+        console.log("Conversion rate not available");
         return null;
       }
     })
@@ -38,10 +43,12 @@ const convertToCurrency = (srcAmount, sourceCurrency, targetCurrency) => {
 };
 
 const convertToBaseCurrency = (srcAmount, sourceCurrency) => {
+  console.log("Source currency: ", sourceCurrency);
   if (sourceCurrency == baseCurrency) {
     return Promise.resolve(srcAmount);
   }
   return convertToCurrency(srcAmount, sourceCurrency, baseCurrency);
-}
+  // return Promise.resolve(srcAmount);
+};
 
 export { currencyOptions, convertToCurrency, convertToBaseCurrency };

@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../config";
 
 const getEventByID = async (userID, eventID) => {
@@ -18,4 +18,26 @@ const getEventByID = async (userID, eventID) => {
   }
 };
 
+const getAllEvents = async (userID) => {
+  try {
+    const eventsCollectionRef = collection(db, "users", userID, "events");
+    const snapshot = await getDocs(eventsCollectionRef);
+
+    const events = snapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        name: doc.data().name,
+        tags: doc.data().tags,
+        transactions: doc.data().transactions,
+      }
+    });
+
+    return events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    throw error;
+  }
+}
+
 export default getEventByID;
+export { getAllEvents }
