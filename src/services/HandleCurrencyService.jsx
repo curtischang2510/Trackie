@@ -1,9 +1,7 @@
 import Freecurrencyapi from "@everapi/freecurrencyapi-js";
 
 const baseCurrency = "SGD"; // hard coded for now
-const freecurrencyapi = new Freecurrencyapi(
-  "fca_live_CGiBmBieHtUkBVZ576rUh8BlLKnvXiKWIb9whJyG"
-);
+const freecurrencyapi = new Freecurrencyapi(import.meta.env.VITE_API_FREE_CURRENCY);
 
 const currencyOptions = [
   { value: "USD", label: "USD - United States Dollar" },
