@@ -1,0 +1,32 @@
+.card_container {
+    width: 50%; /* The container takes 50% of the screen width */
+    margin: 40px auto; /* Center the container horizontally */
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next row if necessary */
+    justify-content: center; /* Center align items horizontally */
+    align-items: center; /* Center align items vertically when there's only one row */
+    gap: 32px; /* Add spacing between cards */
+    /* min-height: 100vh; Ensure the container takes full height for vertical centering */
+}
+
+.card_image {
+}
+
+.card h3{
+    margin: 10px;
+}
+
+.cardLink {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+}
+
+.card {
+  cursor: pointer; /* Show a pointer to indicate the card is clickable */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}

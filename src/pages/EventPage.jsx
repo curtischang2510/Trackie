@@ -10,6 +10,8 @@ const EventPage = ({ userID, eventID }) => {
         { name: "Category 3", value: 50 },
         { name: "Category 4", value: 150 },
       ];
+    
+    const eventData = getEventByID(userID, eventID)
 
     return(
         <div>
