@@ -5,7 +5,11 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 
 const EventCard = ({ eventID, eventName }) => {
   return (
-    <Link to={`/EventPage/${eventID}`} className={styles.cardLink}>
+    <Link 
+      to={`/EventPage/${eventID}`} 
+      state={{ eventID }}
+      className={styles.cardLink}
+    >
       <div className={styles.card}>
         <img src={reactImg} alt="default photo" className={styles.card_image} />
         <h3>{eventName}</h3>

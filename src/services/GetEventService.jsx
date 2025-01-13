@@ -3,6 +3,7 @@ import { db } from "../config";
 
 const getEventByID = async (userID, eventID) => {
   try {
+    console.log("userID:", userID, "eventID:", eventID);
     const eventDocRef = doc(db, "users", userID, "events", eventID);
     const eventDocSnap = await getDoc(eventDocRef);
 

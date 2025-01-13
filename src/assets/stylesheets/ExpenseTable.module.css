@@ -1,0 +1,68 @@
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #555; /* Darker border for better contrast */
+  background-color: #2c2c2c; /* Darker table background */
+  color: #f9f9f9; /* Light text color for readability */
+}
+
+.tr {
+  display: table-row;
+}
+
+.th,
+.td {
+  display: table-cell;
+  padding: 12px; /* Slightly increased padding for better spacing */
+  border: 1px solid #555; /* Matches table border for consistency */
+  text-align: left;
+}
+
+.th {
+  background-color: #3e3e3e; /* Slightly lighter background for headers */
+  font-weight: bold;
+  color: #ffffff; /* White text for headers */
+}
+
+.td {
+  background-color: #2c2c2c; /* Matches table background */
+  color: #e0e0e0; /* Light gray text for better readability */
+}
+
+/* Optional: Add hover effect for table rows */
+.tr:hover .td {
+  background-color: #444; /* Highlight row on hover */
+}
+
+.pageInfo {
+    color: black;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.pageNavigationButtonGroup {
+    display: flex;
+}
+
+.pageNavigationButton {
+    border-radius: 0; /* Reset border radius for all edges */
+    background-color: #2c2c2c; /* Dark background for buttons */
+    color: white; /* Text color */
+    padding: 12px 20px; /* Adjust padding for button size */
+    border: 1px solid #555; /* Button border */
+    cursor: pointer; /* Pointer cursor for hover effect */
+  }
+  
+  .pageNavigationButton:first-child {
+    border-radius: 5px 0 0 5px; /* Top-left, top-right, bottom-right, bottom-left */
+  }
+  
+  .pageNavigationButton:last-child {
+    border-radius: 0 5px 5px 0; /* Top-left, top-right, bottom-right, bottom-left */
+  }
+  
+  /* Optional: Add hover effect for buttons */
+  .pageNavigationButton:hover {
+    background-color: #444; /* Slightly lighter background on hover */
+  }
