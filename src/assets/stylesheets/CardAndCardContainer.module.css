@@ -14,6 +14,7 @@
 
 .card h3{
     margin: 10px;
+    color: #000000;
 }
 
 .cardLink {
@@ -29,4 +30,8 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover h3 {
+  color: blueviolet;
 }

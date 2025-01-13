@@ -44,7 +44,7 @@ const EventPage = () => {
 
     return(
         <div>
-           <CustomPieChart data={data}/>
+           <CustomPieChart eventData={eventData}/>
            <ExpenseTable transactions={eventData.transactions}/>
         </div>
     )

@@ -28,6 +28,11 @@ const columns = [
     header: "Amount in base currency (SGD)",
     cell: (props) => <p>{props.getValue()}</p>,
   },
+  {
+    accessorKey: "tag",
+    header: "Tag",
+    cell: (props) => <p>{props.getValue()}</p>,
+  },
 ];
 
 const ExpenseTable = ({ transactions }) => {
