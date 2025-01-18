@@ -6,7 +6,7 @@
     gap: 20px;
 }
 
-.tag {
+.tag, .add_tag_button{
     cursor: pointer;
     background-color: black;
     color: white;
@@ -16,6 +16,10 @@
     cursor: pointer;
     font-size: 16px; /* Adjust font size */
     transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.add_tag_button {
+    background-color: blueviolet;
 }
 
 .picked {

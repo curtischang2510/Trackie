@@ -32,6 +32,10 @@ const AddEventPage = () => {
       : selectedTagsRef.current.add(tag);
   });
 
+  const addTag = () => {
+
+  }
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -53,7 +57,7 @@ const AddEventPage = () => {
           </button>
         </div>
 
-        <TagsContainer toggleTag={toggleTag} />
+        <TagsContainer toggleTag={toggleTag} addTag={addTag}/>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import getEventByID from "../services/GetEventService";
 import CustomPieChart from "../components/charts/CustomPieChart";
 import ExpenseTable from "../components/ExpenseTable";
 import { AuthenticatedUserContext } from "../contexts/AuthenticatedUserContext";
+import HomePageButton from "../components/HomepageButton";
 
 const EventPage = () => {
     const { userID } = useContext(AuthenticatedUserContext);
@@ -44,6 +45,7 @@ const EventPage = () => {
 
     return(
         <div>
+           <HomePageButton/>
            <CustomPieChart eventData={eventData}/>
            <ExpenseTable transactions={eventData.transactions}/>
         </div>
