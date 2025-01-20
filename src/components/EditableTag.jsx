@@ -8,7 +8,14 @@ const EditableTag = ({ handleNewTag, cancelAddingTag }) => {
   };
 
   const finaliseTag = () => {
-    handleNewTag(newTagName.trim())
+    const finalTagName = newTagName.trim()
+    if (finalTagName === "") {
+      cancelTag()
+      return
+    }
+
+    const capitalizeFirstLetter = finalTagName.charAt(0).toUpperCase() + finalTagName.slice(1)
+    handleNewTag(capitalizeFirstLetter)
   };
 
 

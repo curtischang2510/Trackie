@@ -1,0 +1,71 @@
+/* Background color for the page */
+.eventPage {
+    background-color: #f0f8ff; /* Alice Blue */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Animated Event Name */
+.eventName {
+    color: #4b0082; /* Indigo */
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+    animation: bounce 6s infinite;
+}
+
+/* Loading Message */
+.loading {
+    font-size: 1.5rem;
+    color: #ff4500; /* Orange Red */
+    text-align: center;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+/* Error Message */
+.errorMessage {
+    font-size: 1.5rem;
+    color: #dc143c; /* Crimson */
+    text-align: center;
+    background-color: #fff5f5; /* Light Red Background */
+    border: 1px solid #dc143c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.noExpenseMessage {
+    background-color: #cbf4cb;
+    color: #32CD32;
+    border: 1px solid #32CD32;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+    /* Add idle state */
+    100%, 150% {
+        transform: translateY(0); /* Hold in place */
+    }
+}
+
+/* Pulse Animation for loading */
+@keyframes pulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
