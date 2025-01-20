@@ -8,7 +8,7 @@ const generatePieData = ( eventData ) => {
   }, {})
 
   eventData.transactions.forEach(trans => {
-    tagSum[trans.tag] += parseFloat(trans.amount, 10)
+    tagSum[trans.tag] += parseFloat(trans.amount_in_base_currency, 10)
   });
 
   const pieData = Object.entries(tagSum).map(([name, value]) => {
@@ -29,8 +29,6 @@ const CustomPieChart = ({ eventData }) => {
   useEffect(() => {
     if (eventData) {
       const pieData = generatePieData(eventData);
-      console.log("Below is pieData")
-      console.log(pieData);
       setPieData(pieData);
     }
   }, [eventData])
@@ -52,7 +50,7 @@ const CustomPieChart = ({ eventData }) => {
           ))}
           {/* Correctly placed Label */}
           <Label
-            value={`Total: ${getTotalExpenditure(pieData)}`} 
+            value={`Total: $${getTotalExpenditure(pieData)}`} 
             position="center"
             style={{ fontSize: "16px", fontWeight: "bold" }}
           />
